@@ -233,6 +233,7 @@ ngloWebManager.factory('loWeb', ['$rootScope', '$log', '$http', '$httpParamSeria
       return (sound, track, playerSuccessCallback, playerFailCallback) => {
 
         function successCallback() {
+          track.download_url = sound.url;
           playerSuccessCallback();
           success();
         }
