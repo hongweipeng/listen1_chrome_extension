@@ -238,6 +238,18 @@ function build_qq() {
       + '%3A1%2C%22platform%22%3A%2220%22%7D%7D%2C%22comm%22%3A%7B%22uin%22%3A0%2C%22'
       + 'format%22%3A%22json%22%2C%22ct%22%3A20%2C%22cv%22%3A0%7D%7D';
     hm({
+      url: 'https://api.qq.jsososo.com/song/url',
+      method: 'GET',
+      params: {
+        id: songId,
+        br: 'flac',
+      }
+    }).then((resp) => {
+      let { data } = response;
+      data = JSON.parse(data);
+      sound.url = data.url; // eslint-disable-line no-param-reassign
+    });
+    /*hm({
       url: target_url,
       method: 'GET',
       transformResponse: undefined,
@@ -252,7 +264,7 @@ function build_qq() {
         const url = data.req_0.data.sip[0] + data.req_0.data.midurlinfo[0].purl;
         sound.url = url; // eslint-disable-line no-param-reassign
         success();
-      });
+      });*/
   }
 
   function str2ab(str) {
