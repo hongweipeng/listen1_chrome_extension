@@ -56,6 +56,7 @@ function build_qq() {
   }
 
   function qq_is_playable(song) {
+    return true;
     const switch_flag = song.switch.toString(2).split('');
     switch_flag.pop();
     switch_flag.reverse();
@@ -242,12 +243,11 @@ function build_qq() {
       method: 'GET',
       params: {
         id: songId,
-        br: 'flac',
+        type: 'flac',
       }
-    }).then((resp) => {
-      let { data } = response;
-      data = JSON.parse(data);
-      sound.url = data.url; // eslint-disable-line no-param-reassign
+    }).then((response) => {
+      sound.url = response.data.data; // eslint-disable-line no-param-reassign
+      success();
     });
     /*hm({
       url: target_url,
