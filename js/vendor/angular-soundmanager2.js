@@ -6860,6 +6860,9 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
             },
             setBootstrapTrack: function(fn){
                 bootstrapTrack = fn;
+            },
+            getBootstrapTrack: function() {
+              return bootstrapTrack;
             }
         };
     }

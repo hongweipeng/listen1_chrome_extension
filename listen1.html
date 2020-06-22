@@ -16,7 +16,7 @@
 
     <link href="css/origin.css" rel="stylesheet" id="theme">
     <link href="css/common.css" rel="stylesheet">
-    
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script type="text/javascript" src="js/vendor/angular.min.js"></script>
     <script src="js/vendor/angular-translate.min.js"></script>
@@ -259,6 +259,7 @@
                                     <a title="{{_ADD_TO_PLAYLIST}}" class="detail-fav-button" ng-show="options" ng-click="showDialog(0, song)"><span class="icon li-songlist"></span></a>
                                     <a title="{{_REMOVE_FROM_PLAYLIST}}" class="detail-delete-button" ng-click="removeSongFromPlaylist(song, list_id)" ng-show="options && is_mine=='1' "><span class="icon li-del"></span></a>
                                     <a title="{{_ORIGIN_LINK}}" class="source-button" open-url="song.source_url" ng-show="options"><span class="icon li-link"></span></a>
+                                    <a title="下载" class="source-button" ng-show="options" ng-click="downloadSong(song)"><span class="icon fa fa-download"></span></a>
                                   </div>
                               </li>
                             </ul>
@@ -434,6 +435,7 @@
                                     <a title="{{_ADD_TO_PLAYLIST}}" class="detail-fav-button" ng-show="options" ng-click="showDialog(0, song)"><span class="icon li-songlist"></span></a>
                                     <a title="{{_REMOVE_FROM_PLAYLIST}}" class="detail-delete-button" ng-click="removeSongFromPlaylist(song, list_id)" ng-show="options && is_mine=='1' "><span class="icon li-del"></span></a>
                                     <a title="{{_ORIGIN_LINK}}" class="source-button" open-url="song.source_url" ng-show="options"><span class="icon li-link"></span></a>
+                                    <a title="下载" class="source-button" ng-show="options" ng-click="downloadSong(song)"><span class="icon fa fa-download"></span></a>
                                     </div>
                                 </li>
                             </ul>

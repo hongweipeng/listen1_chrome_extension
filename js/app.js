@@ -653,6 +653,13 @@ const main = () => {
         link.remove();
       };
 
+      $scope.downloadSong = (song) => {
+        let bootStrapTrack = angularPlayer.getBootstrapTrack();
+        bootStrapTrack(song, song, function() {
+          $scope.downloadMusic(song);
+        });
+      };
+
       $scope.downloadMusic = (currentPlaying) => {
         console.log(currentPlaying);
         /**
