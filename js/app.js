@@ -707,6 +707,13 @@ const main = () => {
           if (currentPlaying.artist) {
             filename = filename + '-' + currentPlaying.artist;
           }
+          // 文件加上后缀名
+          let url_name = (currentPlaying.download_url.split('?')[0]);
+          let tmp = url_name.split('.');
+          if (tmp.length) {
+            let ext = tmp[tmp.length - 1];
+            filename = filename + '.' + ext;
+          }
           saveAs(blob, filename);
         });
 
