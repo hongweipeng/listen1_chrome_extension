@@ -413,6 +413,11 @@
                                             <div class="play-list"><svg class="feather"><use xlink:href="images/feather-sprite.svg#git-merge"></use></svg><span>{{_IMPORT}}</span></div>
                                         </div>
                                     </div>
+                                    <div class="playlist-search navigation" style="border-bottom:none">
+                                        <input class="form-control search-input"
+                        id="search-input-in-playlist" type="text" ng-model="keywords_in_playlist" placeholder="搜索歌单音乐" ng-model-options="{debounce: 500}" ng-keyup="void(0)">
+
+                                    </div>
                                   </div>
 
                             </div>
@@ -423,7 +428,7 @@
                                     <div class="album"><a>{{_ALBUMS}}</a></div>
                                     <div class="tools">{{_OPERATION}}</div>
                                 </li>
-                                <li ng-repeat="song in songs track by $index" ng-class-odd="'odd'" ng-class-even="'even'" ng-mouseenter="options=true" ng-mouseleave="options=false">
+                                <li ng-repeat="song in filter_keyword_songs(songs) track by $index" ng-class-odd="'odd'" ng-class-even="'even'" ng-mouseenter="options=true" ng-mouseleave="options=false">
                                     <div class="title">
                                       <!-- <a class="disabled" ng-if="song.disabled" ng-click="copyrightNotice()">{{ song.title }}</a> -->
                                       <a add-and-play="song">{{ song.title }}</a>

@@ -1492,6 +1492,7 @@ const main = () => {
       $scope.originpagelog = Array(getAllProviders().length + 1).fill(1);  // [网易,虾米,QQ,NULL,酷狗,酷我,bilibili, migu]
       $scope.tab = 0;
       $scope.keywords = '';
+      $scope.keywords_in_playlist = '';
       $scope.loading = false;
       $scope.curpagelog = $scope.originpagelog.slice(0);
       $scope.totalpagelog = $scope.originpagelog.slice(0);
@@ -1533,6 +1534,24 @@ const main = () => {
           // scroll back to top when finish searching
           $('.site-wrapper-innerd').scrollTop(0);
         });
+      }
+
+      $scope.filter_keyword_songs = (songs) => {
+        if (!$scope.keywords_in_playlist) {
+          return songs;
+        }
+        let new_songs = [];
+        for (let i = 0; i < songs.length; i += 1) {
+          let song = songs[i];
+          if (song.title.search($scope.keywords_in_playlist) !== -1) {
+            new_songs.push(song);
+          }else if (song.artist.search($scope.keywords_in_playlist) !== -1) {
+            new_songs.push(song);
+          }else if (song.album.search($scope.keywords_in_playlist) !== -1) {
+            new_songs.push(song);
+          }
+        }
+        return new_songs;
       }
 
       $scope.changeSourceTab = (newTab) => {
