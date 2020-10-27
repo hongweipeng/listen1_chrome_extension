@@ -412,6 +412,9 @@
                                         <div class="playlist-button edit-button" ng-show="is_mine" ng-click="showDialog(6)">
                                             <div class="play-list"><svg class="feather"><use xlink:href="images/feather-sprite.svg#git-merge"></use></svg><span>{{_IMPORT}}</span></div>
                                         </div>
+                                        <div class="playlist-button edit-button" ng-click="downloadSelected()">
+                                          <div class="play-list"><span class="icon "></span><span>下载选中的音乐</span></div>
+                                        </div>
                                     </div>
                                     <div class="playlist-search navigation" style="border-bottom:none">
                                         <input class="form-control search-input"
@@ -423,7 +426,7 @@
                             </div>
                             <ul class="detail-songlist">
                                 <li class="head">
-                                    <div class="title"><a>{{_SONGS + '(' + songs.length + ')'}}</a></div>
+                                    <div class="title"><input ng-checked="selected_songs && selected_songs.length === songs.length" ng-click="selectedAll()" type="checkbox"/><a>{{_SONGS + '(' + songs.length + ')'}}</a></div>
                                     <div class="artist"><a>{{_ARTISTS}}</a></div>
                                     <div class="album"><a>{{_ALBUMS}}</a></div>
                                     <div class="tools">{{_OPERATION}}</div>
@@ -431,6 +434,7 @@
                                 <li ng-repeat="song in filter_keyword_songs(songs) track by $index" ng-class-odd="'odd'" ng-class-even="'even'" ng-mouseenter="options=true" ng-mouseleave="options=false">
                                     <div class="title">
                                       <!-- <a class="disabled" ng-if="song.disabled" ng-click="copyrightNotice()">{{ song.title }}</a> -->
+                                        <input ng-checked="songIsSelected(song)" ng-click="songClickSelected(song)" type="checkbox"/>
                                       <a add-and-play="song">{{ song.title }}</a>
                                     </div>
                                     <div class="artist"><a ng-click="showPlaylist(song.artist_id)">{{ song.artist }}</a></div>

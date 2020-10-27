@@ -660,6 +660,52 @@ const main = () => {
         });
       };
 
+      $scope.songClickSelected = function(song){
+        if (!$scope.selected_songs) {
+          $scope.selected_songs = [];
+        }
+        let index = $scope.selected_songs.indexOf(song);
+        if (index >= 0) {
+          $scope.selected_songs.splice(index, 1);
+        } else {
+          $scope.selected_songs.push(song);
+        }
+      }
+
+      $scope.selectedAll = function () {
+        if (!$scope.selected_songs) {
+          $scope.selected_songs = [];
+        }
+        if ($scope.selected_songs.length === $scope.songs.length) {
+          // clear
+          $scope.selected_songs = [];
+        } else {
+          // add all
+          $scope.selected_songs = [];
+          for (var i = 0 ; i < $scope.songs.length; ++i) {
+            let song = $scope.songs[i];
+            $scope.selected_songs.push(song);
+          }
+        }
+      }
+
+      $scope.songIsSelected = function (song) {
+        if (!$scope.selected_songs) {
+          return false;
+        }
+        return $scope.selected_songs.indexOf(song) >= 0;
+      }
+
+      $scope.downloadSelected = function () {
+        if (!$scope.selected_songs) {
+          return;
+        }
+        for (var i = 0 ; i < $scope.selected_songs.length; ++i) {
+          let song = $scope.selected_songs[i];
+          $scope.downloadSong(song);
+        }
+      }
+
       $scope.downloadMusic = (currentPlaying) => {
         console.log(currentPlaying);
         /**
@@ -1493,6 +1539,7 @@ const main = () => {
       $scope.tab = 0;
       $scope.keywords = '';
       $scope.keywords_in_playlist = '';
+      $scope.selected_songs = [];
       $scope.loading = false;
       $scope.curpagelog = $scope.originpagelog.slice(0);
       $scope.totalpagelog = $scope.originpagelog.slice(0);
