@@ -15,6 +15,7 @@
 
     <link href="css/origin.css" rel="stylesheet" id="theme" />
     <link href="css/common.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet">
 
     <link href="images/logo_16.png" rel="shortcut icon" />
     <link href="images/logo_16.png" rel="bookmark" />
@@ -829,6 +830,11 @@
                                     ng-show="options"
                                     ><span class="icon li-link"></span
                                   ></a>
+                                  <a title="下载"
+                                     class="source-button"
+                                     ng-show="options"
+                                     ng-click="downloadSong(song)"
+                                  ><span class="icon fa fa-download"></span></a>
                                 </div>
                               </li>
                               <li
@@ -1692,6 +1698,11 @@
                                 ng-show="options && !is_local"
                                 ><span class="icon li-link"></span
                               ></a>
+                              <a title="下载"
+                                 class="source-button"
+                                 ng-show="options"
+                                 ng-click="downloadSong(song)"
+                              ><span class="icon fa fa-download"></span></a>
                             </div>
                           </li>
                         </ul>
