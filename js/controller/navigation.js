@@ -624,10 +624,16 @@ angular.module('listenone').controller('NavigationController', [
       let bootStrapTrack = loWeb.bootstrapTrack; //l1Player.getBootstrapTrack();
       bootStrapTrack(song, function() {
         $scope.downloadMusic(song);
-      }, ()=>{});
+      }, ()=>{
+        console.log('获取下载链接失败');
+      });
     };
     $scope.downloadMusic = (currentPlaying) => {
       console.log(currentPlaying);
+      if (! currentPlaying.download_url) {
+        alert('歌曲《'+ currentPlaying.title +'-'+currentPlaying.artist +'》下载链接获取失败');
+        return;
+      }
       /**
        * 获取 blob
        * @param  {String} url 目标文件地址

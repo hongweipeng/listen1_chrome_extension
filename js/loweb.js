@@ -336,10 +336,13 @@ const MediaService = {
   },
 
   bootstrapTrack(track, playerSuccessCallback, playerFailCallback) {
-    const successCallback = function (response) {
+    const success_callback = playerSuccessCallback;
+    playerSuccessCallback = function (response) {
       track.download_url = response.url;
-      playerSuccessCallback(response);
+      success_callback(response);
     };
+    const successCallback = playerSuccessCallback;
+
     const sound = {};
     function failureCallback() {
       if (localStorage.getObject('enable_auto_choose_source') === false) {
